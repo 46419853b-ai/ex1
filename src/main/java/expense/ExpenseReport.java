@@ -16,14 +16,7 @@ public class ExpenseReport {
                 mealExpenses += expense.amount;
             }
 
-            String expenseName = getExpenseName(expense);
-
-            if (isOverLimit(expense)) {
-                System.out.print(expenseName + "\t" + expense.amount + "\tX\n");
-            } else {
-                System.out.print(expenseName + "\t" + expense.amount + "\n");
-            }
-
+            printExpense(expense);
             total += expense.amount;
         }
 
@@ -46,5 +39,15 @@ public class ExpenseReport {
     private boolean isOverLimit(Expense expense) {
         return (expense.type == ExpenseType.DINNER && expense.amount > 5000)
                 || (expense.type == ExpenseType.BREAKFAST && expense.amount > 1000);
+    }
+
+    private void printExpense(Expense expense) {
+        String expenseName = getExpenseName(expense);
+
+        if (isOverLimit(expense)) {
+            System.out.print(expenseName + "\t" + expense.amount + "\tX\n");
+        } else {
+            System.out.print(expenseName + "\t" + expense.amount + "\n");
+        }
     }
 }
