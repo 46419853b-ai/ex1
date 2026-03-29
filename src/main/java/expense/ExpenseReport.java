@@ -9,7 +9,7 @@ public class ExpenseReport {
         int total = 0;
         int mealExpenses = 0;
 
-        System.out.print("Expenses " + new Date() + "\n");
+        printHeader();
 
         for (Expense expense : expenses) {
             if (isMealExpense(expense)) {
@@ -22,6 +22,10 @@ public class ExpenseReport {
 
         System.out.print("Meal expenses: " + mealExpenses + "\n");
         System.out.print("Total expenses: " + total + "\n");
+    }
+
+    private void printHeader() {
+        System.out.print("Expenses " + new Date() + "\n");
     }
 
     private boolean isMealExpense(Expense expense) {
