@@ -20,8 +20,7 @@ public class ExpenseReport {
             total += expense.amount;
         }
 
-        System.out.print("Meal expenses: " + mealExpenses + "\n");
-        System.out.print("Total expenses: " + total + "\n");
+        printTotals(mealExpenses, total);
     }
 
     private void printHeader() {
@@ -30,14 +29,6 @@ public class ExpenseReport {
 
     private boolean isMealExpense(Expense expense) {
         return expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST;
-    }
-
-    private String getExpenseName(Expense expense) {
-        return switch (expense.type) {
-            case DINNER -> "Dinner";
-            case BREAKFAST -> "Breakfast";
-            case CAR_RENTAL -> "Car Rental";
-        };
     }
 
     private boolean isOverLimit(Expense expense) {
@@ -53,5 +44,23 @@ public class ExpenseReport {
         } else {
             System.out.print(expenseName + "\t" + expense.amount + "\n");
         }
+    }
+
+    private String getExpenseName(Expense expense) {
+        switch (expense.type) {
+            case DINNER:
+                return "Dinner";
+            case BREAKFAST:
+                return "Breakfast";
+            case CAR_RENTAL:
+                return "Car Rental";
+            default:
+                return "Unknown";
+        }
+    }
+
+    private void printTotals(int mealExpenses, int total) {
+        System.out.print("Meal expenses: " + mealExpenses + "\n");
+        System.out.print("Total expenses: " + total + "\n");
     }
 }
