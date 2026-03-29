@@ -18,8 +18,7 @@ public class ExpenseReport {
 
             String expenseName = getExpenseName(expense);
 
-            if ((expense.type == ExpenseType.DINNER && expense.amount > 5000)
-                    || (expense.type == ExpenseType.BREAKFAST && expense.amount > 1000)) {
+            if (isOverLimit(expense)) {
                 System.out.print(expenseName + "\t" + expense.amount + "\tX\n");
             } else {
                 System.out.print(expenseName + "\t" + expense.amount + "\n");
@@ -42,5 +41,10 @@ public class ExpenseReport {
             case BREAKFAST -> "Breakfast";
             case CAR_RENTAL -> "Car Rental";
         };
+    }
+
+    private boolean isOverLimit(Expense expense) {
+        return (expense.type == ExpenseType.DINNER && expense.amount > 5000)
+                || (expense.type == ExpenseType.BREAKFAST && expense.amount > 1000);
     }
 }
